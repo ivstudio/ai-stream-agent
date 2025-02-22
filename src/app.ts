@@ -1,7 +1,7 @@
 import express from 'express';
-import chatRoutes from './routes/chat';
-import { errorHandler } from './middleware/errorHandler';
 import { corsMiddleware } from './middleware/corsMiddleware';
+import { errorHandler } from './middleware/errorHandler';
+import chatRoutes from './routes/chat';
 
 const app = express();
 

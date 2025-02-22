@@ -4,7 +4,7 @@ import { openaiClient } from '../utils/openAIClient';
 export const chatController = async (
     req: Request,
     res: Response,
-    next: NextFunction
+    _next: NextFunction
 ): Promise<void> => {
     try {
         const { messages } = req.body;

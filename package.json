@@ -4,6 +4,7 @@
     "description": "AI streaming agent server built with Node.js, Express, and TypeScript that interacts with the OpenAI API to provide real-time chat responses",
     "author": "Ignacio Villamar",
     "license": "ISC",
+    "type": "commonjs",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/ivstudio/ai-stream-agent.git"
@@ -35,7 +36,6 @@
         "@typescript-eslint/parser": "^8.24.1",
         "eslint": "^9.21.0",
         "eslint-plugin-import": "^2.31.0",
-        "eslint-plugin-node": "^11.1.0",
         "eslint-plugin-prettier": "^5.2.3",
         "prettier": "^3.5.2",
         "ts-node-dev": "^2.0.0",
