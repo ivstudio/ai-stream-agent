@@ -1,15 +1,12 @@
 # AI Stream Agent
 
-This is an Express.js application that integrates with OpenAI's GPT-3.5-turbo model to provide a chat completion service using Server-Sent Events (SSE).
+This Express.js app connects to OpenAI to power real-time chat completions with Server-Sent Events (SSE). It streams responses seamlessly, keeping conversations smooth and responsive. 🚀
 
 ## Table of Contents
 
--   [Installation](#installation)
--   [Usage](#usage)
--   [API Endpoints](#api-endpoints)
--   [Environment Variables](#environment-variables)
--   [Contributing](#contributing)
--   [License](#license)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Testing Endpoints](#testing-endpoints)
 
 ## Installation
 
@@ -37,12 +34,14 @@ This is an Express.js application that integrates with OpenAI's GPT-3.5-turbo mo
 1. Start the server:
 
     ```sh
-    npm run server
+    npm run dev
     ```
 
-2. The server will start on `http://localhost:3000`.
+2. The server will start on `http://localhost:3001`.
 
 ## Testing Endpoints
+
+You can test the chat completion endpoint using **cURL**:
 
 ```sh
 curl -N -X POST \
@@ -51,19 +50,19 @@ curl -N -X POST \
   http://localhost:3001/api/chat
 ```
 
-### POST /chat
+### POST
 
 This endpoint accepts a list of messages and returns a stream of chat completions.
 
--   **URL**: `/chat`
--   **Method**: `POST`
--   **Headers**: `Content-Type: application/json`
--   **Body**:
+- **URL**: `/api/chat`
+- **Method**: `POST`
+- **Headers**: `Content-Type: application/json`
+- **Body**:
 
     ```json
     {
-    	"messages": [{ "role": "user", "content": "Hello!" }]
+        "messages": [{ "role": "user", "content": "Hello!" }]
     }
     ```
 
--   **Response**: Server-Sent Events (SSE) stream with chat completions.
+- **Response**: Server-Sent Events (SSE) stream with chat completions.
