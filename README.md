@@ -13,7 +13,7 @@ This Express.js app connects to OpenAI to power real-time chat completions with 
 1. Clone the repository:
 
     ```sh
-    git clone https://github.com/ivstudio/ai-stream-agent.git
+    git clone git@github.com:ivstudio/ai-stream-agent.git
     cd ai-stream-agent
     ```
 
