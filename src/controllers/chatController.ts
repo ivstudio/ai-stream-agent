@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
 import { config } from '../config';
-// import { rateLimitMiddleware } from '../middleware/rateLimitMiddleware';
 import { ChatMessage, ChatError } from '../types/chat.types';
 import { logger } from '../utils/logger';
 import { openaiClient } from '../utils/openAIClient';

@@ -5,6 +5,6 @@ export const config = {
             : 4096,
         temperature: process.env.CHAT_TEMPERATURE
             ? parseFloat(process.env.CHAT_TEMPERATURE)
-            : 0.7,
+            : 0,
     },
 };

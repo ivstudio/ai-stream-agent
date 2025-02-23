@@ -1,4 +1,4 @@
-# AI Stream Agent
+# 🤖 AI Stream Agent
 
 This Express.js app connects to OpenAI to power real-time chat completions with Server-Sent Events (SSE). It streams responses seamlessly, keeping conversations smooth and responsive. 🚀
 
@@ -69,7 +69,7 @@ This endpoint accepts a list of messages and returns a stream of chat completion
 - **Headers**: `Content-Type: application/json`
 - **Body**:
 
-    ```json
+    ```js
     {
         "messages": [{ "role": "user", "content": "Hello!" }],
         "model": "gpt-3.5-turbo" // Optional: gpt-3.5-turbo or gpt-4
@@ -80,7 +80,7 @@ This endpoint accepts a list of messages and returns a stream of chat completion
 
 ### Response: SSE stream with events
 
-```json
+```sh
 data: {"content": "Hi there!", "requestId": "uuid"} (message chunks)
 data: {"event": "[DONE]", "requestId": "uuid"} (completion signal)
 Errors: data: {"error": "message", "event": "[ERROR]", "requestId": "uuid"}
@@ -88,7 +88,7 @@ Errors: data: {"error": "message", "event": "[ERROR]", "requestId": "uuid"}
 
 ### Error Responses
 
-```json
+```sh
 400 Bad Request: Invalid messages or model.
 500 Internal Server Error: Server-side issues.
 ```
