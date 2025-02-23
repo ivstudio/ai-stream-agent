@@ -8,6 +8,16 @@ This Express.js app connects to OpenAI to power real-time chat completions with 
 - [Usage](#usage)
 - [Testing Endpoints](#testing-endpoints)
 
+## Features
+
+- **Real-Time Streaming**: Utilizes SSE to stream OpenAI chat completions with low latency.
+- **Class-Based Controller**: Implements a `ChatController` class for better organization, maintainability, and context binding.
+- **Input Sanitization**: Limits message content length and supports configurable models (`gpt-3.5-turbo`, `gpt-4`).
+- **Robust Validation**: Ensures messages are non-empty arrays with valid `role` and `content` fields.
+- **Comprehensive Logging**: Tracks request lifecycle, errors, and client disconnections with request IDs.
+- **Error Handling**: Gracefully handles errors with detailed SSE error events and HTTP responses.
+- **Configurability**: Supports environment variables for max tokens, temperature, and port settings.
+
 ## Installation
 
 1. Clone the repository:
@@ -61,8 +71,24 @@ This endpoint accepts a list of messages and returns a stream of chat completion
 
     ```json
     {
-        "messages": [{ "role": "user", "content": "Hello!" }]
+        "messages": [{ "role": "user", "content": "Hello!" }],
+        "model": "gpt-3.5-turbo" // Optional: gpt-3.5-turbo or gpt-4
     }
     ```
 
 - **Response**: Server-Sent Events (SSE) stream with chat completions.
+
+### Response: SSE stream with events
+
+```json
+data: {"content": "Hi there!", "requestId": "uuid"} (message chunks)
+data: {"event": "[DONE]", "requestId": "uuid"} (completion signal)
+Errors: data: {"error": "message", "event": "[ERROR]", "requestId": "uuid"}
+```
+
+### Error Responses
+
+```json
+400 Bad Request: Invalid messages or model.
+500 Internal Server Error: Server-side issues.
+```

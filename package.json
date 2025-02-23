@@ -27,11 +27,14 @@
         "cors": "^2.8.5",
         "dotenv": "^16.4.7",
         "express": "^4.21.2",
-        "openai": "^4.85.3"
+        "express-rate-limit": "^7.5.0",
+        "openai": "^4.85.3",
+        "winston": "^3.17.0"
     },
     "devDependencies": {
         "@types/cors": "^2.8.17",
         "@types/express": "^5.0.0",
+        "@types/express-rate-limit": "^5.1.3",
         "@typescript-eslint/eslint-plugin": "^8.24.1",
         "@typescript-eslint/parser": "^8.24.1",
         "eslint": "^9.21.0",

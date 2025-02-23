@@ -1,7 +1,8 @@
 import express from 'express';
 import { corsMiddleware } from './middleware/corsMiddleware';
 import { errorHandler } from './middleware/errorHandler';
-import chatRoutes from './routes/chat';
+
+import chatRouter from './routes/chat';
 
 const app = express();
 
@@ -9,7 +10,7 @@ app.use(corsMiddleware);
 
 app.use(express.json());
 
-app.use('/api', chatRoutes);
+app.use('/api', chatRouter);
 
 app.use(errorHandler);
 
