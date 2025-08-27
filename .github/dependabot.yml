@@ -1,0 +1,58 @@
+version: 2
+updates:
+    # Enable version updates for npm packages
+    - package-ecosystem: 'npm'
+      directory: '/'
+      schedule:
+          interval: 'weekly'
+          day: 'monday'
+          time: '09:00'
+          timezone: 'America/New_York'
+      # Limit the number of open pull requests for npm updates
+      open-pull-requests-limit: 10
+      # Group dependency updates to reduce PR noise
+      groups:
+          # Group all non-major dependency updates
+          minor-and-patch:
+              patterns:
+                  - '*'
+              update-types:
+                  - 'minor'
+                  - 'patch'
+          # Group development dependencies separately
+          dev-dependencies:
+              patterns:
+                  - '@types/*'
+                  - 'eslint*'
+                  - 'prettier'
+                  - 'typescript'
+                  - 'ts-node-dev'
+              update-types:
+                  - 'minor'
+                  - 'patch'
+      # Custom labels for better organization
+      labels:
+          - 'dependencies'
+          - 'automated'
+      # Automatically rebase PRs when conflicts arise
+      rebase-strategy: 'auto'
+      # Commit message configuration
+      commit-message:
+          prefix: 'chore'
+          prefix-development: 'chore'
+          include: 'scope'
+
+    # Enable version updates for GitHub Actions (if you add any workflows)
+    - package-ecosystem: 'github-actions'
+      directory: '/'
+      schedule:
+          interval: 'weekly'
+          day: 'monday'
+          time: '09:00'
+          timezone: 'America/New_York'
+      labels:
+          - 'github-actions'
+          - 'dependencies'
+      commit-message:
+          prefix: 'ci'
+          include: 'scope'
